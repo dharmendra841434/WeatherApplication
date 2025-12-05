@@ -26,7 +26,8 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone or Navigate to Project
 
 ```bash
-cd c:/MobileApp/WeatherApplication
+git clone https://github.com/dharmendra841434/WeatherApplication.git
+cd /WeatherApplication
 ```
 
 ### 2. Install Dependencies
