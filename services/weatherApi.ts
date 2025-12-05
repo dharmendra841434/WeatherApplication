@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-const API_KEY = 'bd5e378503939ddaee76f12ad7a97608'; // Example free key (often works for demos, but user should replace)
-const BASE_URL = 'https://api.openweathermap.org/data/2.5'; 
-// Wait, the prompt suggested WeatherAPI.com or similar. 
-// WeatherAPI.com is usually easier for forecast days. 
-// OpenWeatherMap requires paid plan for daily forecast > 5 days or complex one. 
-// Let's stick to WeatherAPI.com as suggested.
-
 const WEATHER_API_KEY = '83aaebf34a64412a9f9104133250301'; // Placeholder or Free key if I have one? creating a placeholder.
 const WEATHER_API_BASE_URL = 'http://api.weatherapi.com/v1';
 

@@ -1,7 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
+  Dimensions,
   FlatList,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -15,6 +17,8 @@ import {
   fetchWeatherAndForecast,
   searchCities,
 } from "../redux/weatherSlice";
+
+const { height: HEIGHT, width: WIDTH } = Dimensions.get("window");
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -46,7 +50,13 @@ const SearchBar = () => {
       <View style={styles.inputContainer}>
         <Ionicons name="search" size={20} color="#ccc" style={styles.icon} />
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              paddingVertical:
+                Platform?.OS === "android" ? HEIGHT * 0.014 : HEIGHT * 0.018,
+            },
+          ]}
           placeholder="Search city..."
           placeholderTextColor="#aaa"
           value={query}
@@ -97,7 +107,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     borderRadius: 25,
     paddingHorizontal: 15,
-    paddingVertical: 10,
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.3)",
   },

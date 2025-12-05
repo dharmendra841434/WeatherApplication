@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import SettingsModal from "./SettingsModal";
 
 const ForecastList = () => {
   const { forecast } = useSelector((state: RootState) => state.weather);
@@ -29,7 +30,13 @@ const ForecastList = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>3-Day Forecast</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>
+          {forecast.forecast.forecastday.length}-Day Forecast
+        </Text>
+        <SettingsModal />
+      </View>
+
       <FlatList
         horizontal
         data={forecast.forecast.forecastday}
@@ -103,6 +110,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#eee",
     textAlign: "center",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 10,
   },
 });
 

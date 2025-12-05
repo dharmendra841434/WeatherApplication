@@ -15,8 +15,19 @@ import { fetchWeatherAndForecast } from "../redux/weatherSlice";
 const SettingsModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const { selectedCity } = useSelector((state: RootState) => state.weather);
-  const [days, setDays] = useState(3);
+  const { selectedCity, forecast } = useSelector(
+    (state: RootState) => state.weather
+  );
+  const [days, setDays] = useState(
+    forecast?.forecast?.forecastday?.length || 3
+  );
+
+  // Update local state if forecast changes externally (e.g. initial load)
+  React.useEffect(() => {
+    if (forecast?.forecast?.forecastday?.length) {
+      setDays(forecast.forecast.forecastday.length);
+    }
+  }, [forecast]);
 
   const handleSave = (newDays: number) => {
     setDays(newDays);
@@ -82,9 +93,9 @@ const SettingsModal = () => {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 90,
-    right: 30,
-    zIndex: 10,
+    top: "20%",
+    right: 15,
+    zIndex: 50,
   },
   centeredView: {
     flex: 1,

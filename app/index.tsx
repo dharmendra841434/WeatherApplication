@@ -16,7 +16,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CurrentWeather from "../components/CurrentWeather";
 import ForecastList from "../components/ForecastList";
 import SearchBar from "../components/SearchBar";
-import SettingsModal from "../components/SettingsModal";
 
 export default function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +34,6 @@ export default function HomeScreen() {
     >
       <SafeAreaView style={styles.safeArea}>
         <StatusBar style="light" />
-        <SettingsModal />
         <SearchBar />
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
